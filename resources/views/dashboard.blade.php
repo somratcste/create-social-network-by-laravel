@@ -30,8 +30,7 @@
 						|
 						<a href="">Edit</a> |
 						<a href="{{ route('post.delete' , ['post_id' => $post->id]) }}">Delete</a>
-					@endif
-					
+					@endif				
 				</div>
 				</article>
 			@endforeach
