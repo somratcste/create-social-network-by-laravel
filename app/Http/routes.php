@@ -16,7 +16,7 @@ Route::group(['middleware' => ['web']], function()
 {
 	Route::get('/', function () {
     return view('welcome');
-	});
+	})->name('home');
 
     Route::post('/signup', [
     
@@ -32,8 +32,10 @@ Route::group(['middleware' => ['web']], function()
 
     Route::get('/dashboard', [
 
+        'middleware' => 'auth',
     	'uses' => 'UserController@getDashboard',
     	'as' => 'dashboard'
+        
     ]);
 
    
