@@ -41,5 +41,6 @@
 			 <button type="submit" class="btn btn-primary">Log In</button>	
     	</form>
     </div>
+    
 </div>
 @endsection
