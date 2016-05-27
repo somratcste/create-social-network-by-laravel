@@ -28,7 +28,7 @@
 					<a href="">Dislike</a> 
 					@if(Auth::user() == $post->user)
 						|
-						<a href="#">Edit</a> |
+						<a href="#" class="edit" data-toggle="modal" data-target=".bs-example-modal-sm{{$post->id}}">Edit</a> |
 						<a href="{{ route('post.delete' , ['post_id' => $post->id]) }}">Delete</a>
 					@endif				
 				</div>
@@ -37,27 +37,30 @@
 			
 		</div>
 	</section>
-
-	<div class="modal fade" tabindex="-1" role="dialog" id="edit-modal" data-toggle="edit-modal">
+	
+	@foreach ($posts as $post)
+	<div class="modal fade bs-example-modal-sm{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
+	     <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">Edit Post</h4>
+	        <h4 class="modal-title" id="myModalLabel">Edit Post</h4>
 	      </div>
+	      
 	      <div class="modal-body">
-	        <form>
-	        	<div class="form-group">
-	        		<label for="post-body">Edit Post</label>
-	        		<textarea class="form-control" name="post-body" id="post-body" rows="5"></textarea>
-	        	</div>
-	        </form>
+	        <label for="post-body">Edit the Post</label>
+	        <textarea class="form-control" name="post-body" id="post-body" rows="5">{{$post->body}}</textarea>
 	      </div>
+	      
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	        <button type="button" class="btn btn-primary">Save changes</button>
 	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+	    </div>
+	    </div>
+	  </div>
+	</div>
+	@endforeach
+
 @endsection

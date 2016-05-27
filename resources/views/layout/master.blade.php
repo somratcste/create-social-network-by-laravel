@@ -15,6 +15,7 @@
         </div>
 
         <script type='text/javascript' src='js/jquery-1.12.4.js'></script>
+        <script type="text/javascript" scr="js/jquery-migrate-1.3.0.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script src="{{URL::to('src/js/app.js')}}" type="text/javascript" ></script>  
     </body>
