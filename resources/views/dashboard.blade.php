@@ -48,19 +48,24 @@
 	        <h4 class="modal-title" id="myModalLabel">Edit Post</h4>
 	      </div>
 	      
+	      <form action="{{ route('postUpdateRoute',$post->id) }}" method="post">
 	      <div class="modal-body">
 	        <label for="post-body">Edit the Post</label>
-	        <textarea class="form-control" name="post-body" id="post-body" rows="5">{{$post->body}}</textarea>
+	        <textarea class="form-control" name="body" id="post-body" rows="5">{{$post->body}}</textarea>
 	      </div>
 	      
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
+	        <button type="submit" class="btn btn-primary" id="modal-save">Save changes</button>
+	        <input type="hidden" name="_token" value="{{Session::token()}}">
 	      </div>
+	      </form>
 	    </div>
 	    </div>
 	  </div>
 	</div>
 	@endforeach
+
+
 
 @endsection

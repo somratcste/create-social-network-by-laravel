@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class PostController extends Controller {
 
@@ -38,5 +39,22 @@ class PostController extends Controller {
 		}
 		$post->delete();
 		return redirect()->route('dashboard')->with(['message' => 'Successfully Deleted !']);
+	}
+
+	public function getUpdatePost(Request $request , $id) 
+	{
+		$this->validate($request,[
+			'body' => 'required|max:1000'
+		]);
+		
+		$post = new Post();
+		$post = Post::where('id',$id)->first();
+		$post->body = $request['body'];
+		$message = "There is an error !" ;
+		if($request->user()->posts()->save($post))
+		{
+			$message = "Post Updated Successfully.";
+		}
+		return redirect()->route('dashboard')->with(['message'=> $message ]);
 	}
 }
